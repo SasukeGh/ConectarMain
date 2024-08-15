@@ -6,6 +6,8 @@ body {
 }
 
 header {
+    position: relative;
+    z-index: 2000;
     background-color: #333;
     color: #fff;
     padding: 10px 0;
@@ -64,13 +66,14 @@ button:hover {
 }
 
 footer {
-    background-color: #333;
+    background-color: #f8f9fa;
     color: #fff;
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     position: fixed;
     bottom: 0;
     width: 100%;
+    margin-top: 20px;
 }
 
 .menu-image {
@@ -109,6 +112,7 @@ footer {
     padding: 20px;
     box-shadow: -2px 0 10px rgba(0,0,0,0.1);
     overflow-y: auto;
+    z-index: 1000; 
 }
 
 .cart-item {
