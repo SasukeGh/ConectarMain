@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conectar Restaurant</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function getCurrentLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    document.getElementById('latitude').value = position.coords.latitude;
+                    document.getElementById('longitude').value = position.coords.longitude;
+                    document.getElementById('location-input').value = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude;
+                }, function() {
+                    alert("Unable to get your location.");
+                });
+            } else {
+                alert("Location is not supported by this phone.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#order">Order</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contacts">Contacts</a></li>
+            </ul>
+        </nav>
+        <div class="logo">
+            <h1>Conectar Restaurant</h1>
+            <div class="image/jollof.jpg">logo</div>
+        </div>
+    </header>
+
+    <section id="order" class="section">
+        <h2>Order</h2>
+        <div class="menu-item">
+            <img src="images/jollof.jpg" alt="Dish Name" class="menu-image">
+            <p>jollof - ghan jorof - Ghc100</p>
+            <button type="button" onclick="document.getElementById('order-form').style.display='block'">Order</button>
+        </div>
+        <!-- Repeat .menu-item for each dish -->
+    </section>
+
+    <section id="contacts" class="section">
+        <h2>Contacts</h2>
+        <div class="contact-info">
+            <p>0200983838 kumasi eisisj dance isapervasive</p>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2>About Us</h2>
+        <div class="about-us">
+            <p>Best blah blh blah</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Conectar Restaurant</p>
+    </footer>
+
+    <!-- Order Form Modal -->
+    <div id="order-form" style="display:none;">
+        <form action="https://formspree.io/f/your-form-id" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="tel" name="number" placeholder="Your Phone Number" required>
+            <input type="text" name="location" placeholder="Your Location" id="location-input" required>
+            <input type="hidden" name="latitude" id="latitude">
+            <input type="hidden" name="longitude" id="longitude">
+            <button type="button" onclick="getCurrentLocation()">Use Your Current Location</button>
+            <input type="number" name="quantity" placeholder="Quantity" required>
+            <button type="submit">Submit Order</button>
+        </form>
+    </div>
+</body>
+</html>
