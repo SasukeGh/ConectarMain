@@ -6,6 +6,19 @@
     <title>Conectar Restaurant</title>
     <link rel="stylesheet" href="styles.css">
     <script>
+function getCurrentLocation() {
+ if (navigator.geolocation) {
+ navigator.geolocation.getCurrentPosition(function(position) {
+ document.getElementById('latitude').value = position.coords.latitude;
+ document.getElementById('longitude').value = position.coords.longitude;
+ document.getElementById('location-input').value = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude;
+ }, function() {
+ alert("Unable to retrieve your location.");
+ });
+ } else {
+ alert("Geolocation is not supported by this browser.");
+ }
+}
         // Function to add items to the cart
         function addToCart(dishName, price) {
             let cart = document.getElementById('cart-items');
@@ -117,6 +130,20 @@
         </div>
         <!-- Repeat .menu-item for each dish -->
     </section>
+    
+    <section id="contacts" class="section"> 
+        <h2>Contacts</h2> 
+        <div class="contact-info"> 
+            <p>[Contact Info Placeholder]</p> 
+        </div> 
+        </section>
+    
+     <section id="about" class="section"> 
+        <h2>About Us</h2>
+        <div class="about-us"> 
+            <p>[About Us Placeholder]</p> 
+        </div> 
+    </section>
 
     <!-- Cart Sidebar -->
     <div id="cart" class="cart-sidebar">
@@ -125,6 +152,10 @@
         <p id="cart-total">Total: 0 Cedis</p>
         <button onclick="showOrderForm()">Checkout</button>
     </div>
+
+<footer> 
+<p>&copy; 2024 Conectar Restaurant</p>
+ </footer> 
 
     <!-- Order Form Modal -->
     <div id="order-form" style="display:none;">
