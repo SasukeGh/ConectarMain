@@ -102,6 +102,23 @@ document.getElementById('order-form').classList.add('show');
             }
         }
 
+        fetch(form.action, {
+    method: form.method,
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      popupMessage.textContent = `Thank you, ${name}! Your order has been submitted. We will get back to you soon.`;
+      popup.style.display = 'block';
+    } else {
+      popupMessage.textContent = `Sorry, ${name}. There was a problem with your order submission. Please try again later.`;
+      popup.style.display = 'block';
+    }
+    form.reset();
+
         // Function to handle form submission
         function handleFormSubmit(event) {
             event.preventDefault();
@@ -127,6 +144,7 @@ document.getElementById('order-form').classList.add('show');
         <div class="logo">
             <img src="images/conectar.jpg" alt="Conectar Restaurant Logo" class="logo-image">
             <h1>Conectar Restaurant</h1>
+            <h3>Come for a drink,stay for a meal</h3>
         </div>
     </header>
 
@@ -226,7 +244,7 @@ document.getElementById('order-form').classList.add('show');
     <div id="order-form" style="display:none;">
         <h2>Order Form</h2>
         <div id="order-details"></div>
-        <form action="https://formspree.io/f/xzzpgpjp" method="POST" onsubmit="handleFormSubmit(event)">
+            <form action="https://formspree.io/f/xpwadnan" method="post" enctype="multipart/form-data" id="order-details" onsubmit="handleFormSubmit(event)">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="tel" name="number" placeholder="Your Phone Number" required>
             <input type="text" name="location" placeholder="Your Location" id="location-input" required>
