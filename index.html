@@ -106,25 +106,29 @@ function getCurrentLocation() {
                 <li><a href="#order">Order</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#contacts">Contacts</a></li>
+                <li><a href="mailto:Conectarrestaurants@gmail.com">Contacts</a></li>
+                <li><a href="htpps://wa.me/233249510633/?text=Hello+Conectar+Restaurant">Whatsapp</a></li>
+                <li><a href="htpps://wa.me/233257789272/?text=Hello+Kwabena+Osei+Nketiah,+I+like+your+website">Developer</a></li>
+                <li><a href="">HELP</a></li>
             </ul>
         </nav>
         <div class="logo">
-            <img src="images/jollof.jpg" alt="Conectar Restaurant Logo" class="logo-image">
+            <img src="images/conectar.jpg" alt="Conectar Restaurant Logo" class="logo-image">
             <h1>Conectar Restaurant</h1>
         </div>
     </header>
 
     <section id="order" class="section">
-        <h2>Order</h2>
+        <h2>Order Your Food</h2>
         <div class="menu-item">
-            <img src="images/jollof.jpg" alt="Dish Name" class="menu-image">
-            <p>sandwich- nice- 50gh</p>
-            <button type="button" onclick="addToCart('Dish Name', 50)">Add to Cart</button>
+            <img src="images/friedrice.jpg" alt="Fried Rice" class="menu-image">
+            <p>Fried Rice-Delicious Chicken Fried Rice- 50cedis</p>
+            <button type="button" onclick="addToCart('Dish Name', 50)">Add to List</button>
         </div>
         <div class="menu-item">
-            <img src="images/jollof.jpg" alt="Dish Name" class="menu-image">
-            <p>jollof-nice-30 gh</p>
-            <button type="button" onclick="addToCart('Dish Name', 30)">Add to Cart</button>
+            <img src="images/jollof.jpg" alt="Jollof" class="menu-image">
+            <p>Jollof-Scrumptious Ghana Jollof-50 gh</p>
+            <button type="button" onclick="addToCart('Dish Name', 50)">Add to List</button>
         </div>
         <!-- Repeat .menu-item for each dish -->
     </section>
@@ -132,14 +136,21 @@ function getCurrentLocation() {
     <section id="contacts" class="section"> 
         <h2>Contacts</h2> 
         <div class="contact-info"> 
-            <p>Locationisnotsupportedbythisbrowsertobeanobedient</p> 
+            <p>Contact us on:
+            Phone:0249510633
+            Email: Conectarrestaurants@gmail.com
+            Developer:0257789272
+            Whatsapp:0249510633</p> 
         </div> 
         </section>
     
      <section id="about" class="section"> 
         <h2>About Us</h2>
         <div class="about-us"> 
-            <p>Createdbytheongoingsavings</p> 
+            <p>ConectarRestaurant: 
+            Come for a drink stay for a meal
+            We are located at Kwadaso,Kumasi.
+            Website by:Kwabena Osei Nketiah 0257789272</p> 
         </div> 
     </section>
 
@@ -155,15 +166,14 @@ function getCurrentLocation() {
     <div id="order-form" style="display:none;">
         <h2>Order Form</h2>
         <div id="order-details"></div>
-        <form action="https://formspree.io/f/your-form-id" method="POST" onsubmit="handleFormSubmit(event)">
+        <form action="" method="POST" onsubmit="handleFormSubmit(event)">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="tel" name="number" placeholder="Your Phone Number" required>
             <input type="text" name="location" placeholder="Your Location" id="location-input" required>
             <input type="hidden" name="latitude" id="latitude">
             <input type="hidden" name="longitude" id="longitude">
             <button type="button" onclick="getCurrentLocation()">Use Your Current Location</button>
-            <input type="number" name="quantity" placeholder="Quantity" required>
-            <button type="submit">Submit Order</button>
+            <button type="submit">Place your Order</button>
         </form>
     </div>
 </body>
