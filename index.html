@@ -6,18 +6,83 @@
     <title>Conectar Restaurant</title>
     <link rel="stylesheet" href="styles.css">
     <script>
-        function getCurrentLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    document.getElementById('latitude').value = position.coords.latitude;
-                    document.getElementById('longitude').value = position.coords.longitude;
-                    document.getElementById('location-input').value = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude;
-                }, function() {
-                    alert("Unable to get your location.");
-                });
-            } else {
-                alert("Location is not supported by this phone.");
+        // Function to add items to the cart
+        function addToCart(dishName, price) {
+            let cart = document.getElementById('cart-items');
+            let cartList = document.getElementById('cart-list');
+            let itemExists = false;
+
+            // Check if item already exists in cart
+            for (let item of cartList.children) {
+                if (item.dataset.dish === dishName) {
+                    let quantityInput = item.querySelector('input');
+                    quantityInput.value = parseInt(quantityInput.value) + 1;
+                    itemExists = true;
+                    break;
+                }
             }
+
+            // Add new item to cart
+            if (!itemExists) {
+                let cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.dataset.dish = dishName;
+                cartItem.innerHTML = `
+                    <p>${dishName} - ${price} Cedis</p>
+                    <input type="number" value="1" min="1" onchange="updateCartTotal()">
+                    <button onclick="removeFromCart(this)">Remove</button>
+                `;
+                cartList.appendChild(cartItem);
+            }
+
+            updateCartTotal();
+        }
+
+        // Function to remove items from the cart
+        function removeFromCart(button) {
+            button.parentElement.remove();
+            updateCartTotal();
+        }
+
+        // Function to update cart total
+        function updateCartTotal() {
+            let cartList = document.getElementById('cart-list');
+            let items = cartList.children;
+            let total = 0;
+            for (let item of items) {
+                let price = parseFloat(item.querySelector('p').textContent.split('-')[1].trim().split(' ')[0]);
+                let quantity = parseInt(item.querySelector('input').value);
+                total += price * quantity;
+            }
+            total += 20; // Add delivery fee
+            document.getElementById('cart-total').textContent = `Total: ${total} Cedis (including 20 Cedis delivery fee)`;
+        }
+
+        // Function to show the order form
+        function showOrderForm() {
+            document.getElementById('order-form').style.display = 'block';
+            populateOrderForm();
+        }
+
+        // Function to populate the order form with cart items
+        function populateOrderForm() {
+            let cartList = document.getElementById('cart-list');
+            let items = cartList.children;
+            let orderDetails = document.getElementById('order-details');
+            orderDetails.innerHTML = ''; // Clear existing details
+
+            for (let item of items) {
+                let dishName = item.dataset.dish;
+                let quantity = item.querySelector('input').value;
+                orderDetails.innerHTML += `<p>${dishName} - Quantity: ${quantity}</p>`;
+            }
+        }
+
+        // Function to handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            // Add logic to handle form submission (e.g., using Formspree)
+            alert('Order submitted!');
         }
     </script>
 </head>
@@ -32,7 +97,7 @@
             </ul>
         </nav>
         <div class="logo">
-            <img src="images/jollof.jpg" alt="Conectar Restaurant" class="logo-image">
+            <img src="images/jollof.jpg" alt="Conectar Restaurant Logo" class="logo-image">
             <h1>Conectar Restaurant</h1>
         </div>
     </header>
@@ -41,33 +106,30 @@
         <h2>Order</h2>
         <div class="menu-item">
             <img src="images/jollof.jpg" alt="Dish Name" class="menu-image">
-            <p>jollof - ghan jorof - Ghc100</p>
-            <button type="button" onclick="document.getElementById('order-form').style.display='block'">Order</button>
+            <p>sandwich- nice- 50gh</p>
+            <button type="button" onclick="addToCart('Dish Name', 50)">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <img src="images/jollof.jpg" alt="Dish Name" class="menu-image">
+            <p>jollof-nice-30 gh</p>
+            <button type="button" onclick="addToCart('Dish Name', 30)">Add to Cart</button>
         </div>
         <!-- Repeat .menu-item for each dish -->
     </section>
 
-    <section id="contacts" class="section">
-        <h2>Contacts</h2>
-        <div class="contact-info">
-            <p>0200983838 kumasi eisisj dance isapervasive</p>
-        </div>
-    </section>
-
-    <section id="about" class="section">
-        <h2>About Us</h2>
-        <div class="about-us">
-            <p>Best blah blh blah</p>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Conectar Restaurant</p>
-    </footer>
+    <!-- Cart Sidebar -->
+    <div id="cart" class="cart-sidebar">
+        <h2>Cart</h2>
+        <div id="cart-items"></div>
+        <p id="cart-total">Total: 0 Cedis</p>
+        <button onclick="showOrderForm()">Checkout</button>
+    </div>
 
     <!-- Order Form Modal -->
     <div id="order-form" style="display:none;">
-        <form action="https://formspree.io/f/your-form-id" method="POST">
+        <h2>Order Form</h2>
+        <div id="order-details"></div>
+        <form action="https://formspree.io/f/your-form-id" method="POST" onsubmit="handleFormSubmit(event)">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="tel" name="number" placeholder="Your Phone Number" required>
             <input type="text" name="location" placeholder="Your Location" id="location-input" required>
