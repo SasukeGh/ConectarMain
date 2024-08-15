@@ -29,6 +29,13 @@ function getCurrentLocation() {
             let cartList = document.getElementById('cart-items');
             let itemExists = false;
 
+            // Example for showing the cart sidebar
+document.querySelector('.cart-sidebar').classList.add('show');
+
+// Example for showing the order form
+document.getElementById('order-form').classList.add('show');
+
+
             // Check if item already exists in cart
             for (let item of cartList.children) {
                 if (item.dataset.dish === dishName) {
