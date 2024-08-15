@@ -146,6 +146,54 @@ document.getElementById('order-form').classList.add('show');
         </div>
         <!-- Repeat .menu-item for each dish -->
     </section>
+
+    <div class="menu-item">
+            <img src="images/ampesie.jpg" alt="Ampesie" class="menu-image">
+            <p>Ampesie-Traditional Plantain and kontomire-50 gh</p>
+            <button type="button" onclick="addToCart('Ampesie', 50)">Add to List</button>
+        </div>
+        <!-- Repeat .menu-item for each dish -->
+</section>
+
+    <div class="menu-item">
+            <img src="images/razs.jpg" alt="Rice and Zongo Stew" class="menu-image">
+            <p>Rice and Zongo Stew-Local rice with tasty stew-50 gh</p>
+            <button type="button" onclick="addToCart('Rice and Zongo Stew', 50)">Add to List</button>
+        </div>
+        <!-- Repeat .menu-item for each dish -->
+    </section>
+
+    <div class="menu-item">
+            <img src="images/noodles.jpg" alt=" Spicy Noodles" class="menu-image">
+            <p>Spicy Noodles-Hot flavoured noodles to spice up your day-50 gh</p>
+            <button type="button" onclick="addToCart('Noodles', 50)">Add to List</button>
+        </div>
+        <!-- Repeat .menu-item for each dish -->
+    </section>
+
+    <div class="menu-item">
+            <img src="images/aj.jpg" alt="Assorted Jollof Rice" class="menu-image">
+            <p>Assorted Jollof Rice-Scrumptious Ghana Jollof-50 gh</p>
+            <button type="button" onclick="addToCart('Assorted Jollof', 50)">Add to List</button>
+        </div>
+        <!-- Repeat .menu-item for each dish -->
+    </section>
+
+    <div class="menu-item">
+            <img src="images/af.jpg" alt="Assorted Fried Rice" class="menu-image">
+            <p>Assorted Fried Rice-Exquisite Fried rice-50 gh</p>
+            <button type="button" onclick="addToCart('Assorted Fried Rice', 50)">Add to List</button>
+        </div>
+        <!-- Repeat .menu-item for each dish -->
+    </section>
+
+    <div class="menu-item">
+            <img src="images/waakye.jpg" alt="Waakye" class="menu-image">
+            <p>Waakye-Popular Delicay-50 gh</p>
+            <button type="button" onclick="addToCart('waakye', 50)">Add to List</button>
+        </div>
+        <!-- Repeat .menu-item for each dish -->
+    </section>
     
     <section id="contacts" class="section"> 
         <h2>Contacts</h2> 
@@ -178,7 +226,7 @@ document.getElementById('order-form').classList.add('show');
     <div id="order-form" style="display:none;">
         <h2>Order Form</h2>
         <div id="order-details"></div>
-        <form action="" method="POST" onsubmit="handleFormSubmit(event)">
+        <form action="https://formspree.io/f/xzzpgpjp" method="POST" onsubmit="handleFormSubmit(event)">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="tel" name="number" placeholder="Your Phone Number" required>
             <input type="text" name="location" placeholder="Your Location" id="location-input" required>
