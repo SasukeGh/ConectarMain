@@ -21,8 +21,7 @@ function getCurrentLocation() {
 }
         // Function to add items to the cart
         function addToCart(dishName, price) {
-            let cart = document.getElementById('cart-items');
-            let cartList = document.getElementById('cart-list');
+            let cartList = document.getElementById('cart-items');
             let itemExists = false;
 
             // Check if item already exists in cart
@@ -59,7 +58,7 @@ function getCurrentLocation() {
 
         // Function to update cart total
         function updateCartTotal() {
-            let cartList = document.getElementById('cart-list');
+            let cartList = document.getElementById('cart-items');
             let items = cartList.children;
             let total = 0;
             for (let item of items) {
@@ -79,7 +78,7 @@ function getCurrentLocation() {
 
         // Function to populate the order form with cart items
         function populateOrderForm() {
-            let cartList = document.getElementById('cart-list');
+            let cartList = document.getElementById('cart-items');
             let items = cartList.children;
             let orderDetails = document.getElementById('order-details');
             orderDetails.innerHTML = ''; // Clear existing details
