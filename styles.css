@@ -31,14 +31,14 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #FFA500;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #FFA500;
+    color: #fff;
     transform: scale(1.1);
 }
 
