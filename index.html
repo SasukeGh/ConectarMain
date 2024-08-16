@@ -160,6 +160,7 @@
                 let cartItem = document.createElement('div');
                 cartItem.className = 'cart-item';
                 cartItem.dataset.dish = dishName;
+                cart.dataset.price = price;
                 cartItem.innerHTML = `
                     <p>${dishName} - ${price} Cedis</p>
                     <input type="number" value="1" min="1" onchange="updateCartTotal()">
@@ -174,11 +175,13 @@
         function updateCartTotal() {
             let cartList = document.getElementById('cart-items');
             let total = 0;
+            
             for (let item of cartList.children) {
                 let quantity = parseInt(item.querySelector('input').value);
                 let price = parseInt(item.dataset.price);
                 total += price * quantity;
             }
+            
             total += 20; // Delivery fee
             document.getElementById('cart-total').innerText = 'Total: ' + total + ' Cedis';
         }
