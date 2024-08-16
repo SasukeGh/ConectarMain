@@ -12,7 +12,7 @@ header {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: #fff;
+    color: #FFAO7A;
     padding: 10px 0;
     text-align: center;
 }
@@ -44,7 +44,7 @@ nav ul li a:hover {
 
 .section {
     padding: 20px;
-    background: linear-gradient(135deg, #f9f586, #f4c2c2);
+    background: linear-gradient(135deg, #f4c2c2,  #f9f586);
     margin: 10px;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
