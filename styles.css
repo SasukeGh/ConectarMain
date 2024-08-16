@@ -8,7 +8,7 @@ body {
 header {
     position: relative;
     z-index: 2000;
-    background: linear-gradient(135deg, #ff9a8b, #fbeff6);
+    background-image: url('conectar.jpg')
     color: #fff;
     padding: 10px 0;
     text-align: center;
@@ -37,12 +37,6 @@ nav ul li a {
 nav ul li a:hover {
     color: #ffd700;
     transform: scale(1.1);
-}
-
-.logo-placeholder {
-    height: 100px;
-    background: #ff6f61;
-    margin: 0 auto;
 }
 
 .section {
