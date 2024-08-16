@@ -10,133 +10,6 @@
     <meta property="og:description" content="Conectar Restaurant Website">
     <title>Conectar Restaurant</title>
     <link rel="stylesheet" href="styles.css">
-    <script>
-function getCurrentLocation() {
- if (navigator.geolocation) {
- navigator.geolocation.getCurrentPosition(function(position) {
- document.getElementById('latitude').value = position.coords.latitude;
- document.getElementById('longitude').value = position.coords.longitude;
- document.getElementById('location-input').value = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude;
- }, function() {
- alert("Unable to retrieve your location.");
- });
- } else {
- alert("Geolocation is not supported by this browser.");
- }
-}
-        // Function to add items to the cart
-        function addToCart(dishName, price) {
-            let cartList = document.getElementById('cart-items');
-            let itemExists = false;
-
-            // Example for showing the cart sidebar
-document.querySelector('.cart-sidebar').classList.add('show');
-
-// Example for showing the order form
-document.getElementById('order-form').classList.add('show');
-
-
-            // Check if item already exists in cart
-            for (let item of cartList.children) {
-                if (item.dataset.dish === dishName) {
-                    let quantityInput = item.querySelector('input');
-                    quantityInput.value = parseInt(quantityInput.value) + 1;
-                    itemExists = true;
-                    break;
-                }
-            }
-
-            // Add new item to cart
-            if (!itemExists) {
-                let cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                cartItem.dataset.dish = dishName;
-                cartItem.innerHTML = `
-                    <p>${dishName} - ${price} Cedis</p>
-                    <input type="number" value="1" min="1" onchange="updateCartTotal()">
-                    <button onclick="removeFromCart(this)">Remove</button>
-                `;
-                cartList.appendChild(cartItem);
-            }
-
-            updateCartTotal();
-        }
-
-        // Function to remove items from the cart
-        function removeFromCart(button) {
-            button.parentElement.remove();
-            updateCartTotal();
-        }
-
-        // Function to update cart total
-        function updateCartTotal() {
-            let cartList = document.getElementById('cart-items');
-            let items = cartList.children;
-            let total = 0;
-            for (let item of items) {
-                let price = parseFloat(item.querySelector('p').textContent.split('-')[1].trim().split(' ')[0]);
-                let quantity = parseInt(item.querySelector('input').value);
-                total += price * quantity;
-            }
-            total += 20; // Add delivery fee
-            document.getElementById('cart-total').textContent = `Total: ${total} Cedis (including 20 Cedis delivery fee)`;
-        }
-
-        // Function to show the order form
-        function showOrderForm() {
-            document.getElementById('order-form').style.display = 'block';
-            populateOrderForm();
-        }
-
-        // Function to populate the order form with cart items
-        function populateOrderForm() {
-            let cartList = document.getElementById('cart-items');
-            let items = cartList.children;
-            let orderDetails = document.getElementById('order-details');
-            orderDetails.innerHTML = ''; // Clear existing details
-
-            for (let item of items) {
-                let dishName = item.dataset.dish;
-                let quantity = item.querySelector('input').value;
-                orderDetails.innerHTML += `<p>${dishName} - Quantity: ${quantity}</p>`;
-            }
-        }
-
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            
-            let form = document.getElementById('order-form');
-            let formData = new FormData(form);
-
-        fetch(form.action, {
-    method: form.method,
-    body: formData,
-    headers: {
-      'Accept': 'application/json'
-    }
-  })
-  .then(response => {
-    if (response.ok) {
-      document.getElementById('popup-message').textContent = `Thank you, ${name}! Your order has been submitted. We will get back to you soon.`;
-    }else{
-      document.getElementById('popup-message').textContent = `Sorry, ${name}. There was a problem with your order submission. Please try again later.`;
-    }
-     document.getElementById('popup').style.display = 'block';
-    form.reset();
-})
-.catch(error => { document.getElementById('popup-message').textContent = `An error occurred: ${error.message}`;
-    document.getElementById('popup').style.display = 'block';
-                });
-        }
-        <!-- Popup Modal -->
-<div id="popup" class="popup-modal" style="display:none;">
-    <div class="popup-content">
-        <span class="close-btn" onclick="document.getElementById('popup').style.display='none'">&times;</span>
-        <p id="popup-message"></p>
-    </div>
-</div>
-
-    </script>
 </head>
 <body>
     <header>
@@ -155,7 +28,7 @@ document.getElementById('order-form').classList.add('show');
         <div class="logo">
             <img src="images/conectar.jpg" alt="Conectar Restaurant Logo" class="logo-image">
             <h1>Conectar Restaurant</h1>
-            <h3>Come for a drink,stay for a meal</h3>
+            <h3>Come for a drink, stay for a meal</h3>
         </div>
     </header>
 
@@ -163,70 +36,62 @@ document.getElementById('order-form').classList.add('show');
         <h2>Order Your Food</h2>
         <div class="menu-item">
             <img src="images/friedrice.jpg" alt="Fried Rice" class="menu-image">
-            <p>Fried Rice-Delicious Chicken Fried Rice- 50cedis</p>
+            <p>Fried Rice - Delicious Chicken Fried Rice - 50 cedis</p>
             <button type="button" onclick="addToCart('Fried Rice', 50)">Add to List</button>
         </div>
-
-
         <div class="menu-item">
             <img src="images/jollof.jpg" alt="Jollof" class="menu-image">
-            <p>Jollof-Scrumptious Ghana Jollof-50 gh</p>
+            <p>Jollof - Scrumptious Ghana Jollof - 50 cedis</p>
             <button type="button" onclick="addToCart('Jollof', 50)">Add to List</button>
         </div>
-
-    <div class="menu-item">
+        <div class="menu-item">
             <img src="images/ampesie.jpg" alt="Ampesie" class="menu-image">
-            <p>Ampesie-Traditional Plantain and kontomire-50 gh</p>
+            <p>Ampesie - Traditional Plantain and Kontomire - 50 cedis</p>
             <button type="button" onclick="addToCart('Ampesie', 50)">Add to List</button>
-    </div>
-
-    <div class="menu-item">
+        </div>
+        <div class="menu-item">
             <img src="images/razs.jpg" alt="Rice and Zongo Stew" class="menu-image">
-            <p>Rice and Zongo Stew-Local rice with tasty stew-50 gh</p>
+            <p>Rice and Zongo Stew - Local rice with tasty stew - 50 cedis</p>
             <button type="button" onclick="addToCart('Rice and Zongo Stew', 50)">Add to List</button>
         </div>
-
-    <div class="menu-item">
-            <img src="images/noodles.jpg" alt=" Spicy Noodles" class="menu-image">
-            <p>Spicy Noodles-Hot flavoured noodles to spice up your day-50 gh</p>
+        <div class="menu-item">
+            <img src="images/noodles.jpg" alt="Spicy Noodles" class="menu-image">
+            <p>Spicy Noodles - Hot flavoured noodles to spice up your day - 50 cedis</p>
             <button type="button" onclick="addToCart('Noodles', 50)">Add to List</button>
         </div>
-
-    <div class="menu-item">
+        <div class="menu-item">
             <img src="images/aj.jpg" alt="Assorted Jollof Rice" class="menu-image">
-            <p>Assorted Jollof Rice-Scrumptious Ghana Jollof-50 gh</p>
+            <p>Assorted Jollof Rice - Scrumptious Ghana Jollof - 50 cedis</p>
             <button type="button" onclick="addToCart('Assorted Jollof', 50)">Add to List</button>
         </div>
-
-    <div class="menu-item">
+        <div class="menu-item">
             <img src="images/af.jpg" alt="Assorted Fried Rice" class="menu-image">
-            <p>Assorted Fried Rice-Exquisite Fried rice-50 gh</p>
+            <p>Assorted Fried Rice - Exquisite Fried Rice - 50 cedis</p>
             <button type="button" onclick="addToCart('Assorted Fried Rice', 50)">Add to List</button>
-    </div>
-
-    <div class="menu-item">
+        </div>
+        <div class="menu-item">
             <img src="images/waakye.jpg" alt="Waakye" class="menu-image">
-            <p>Waakye-Popular Delicay-50 gh</p>
-            <button type="button" onclick="addToCart('waakye', 50)">Add to List</button>
+            <p>Waakye - Popular Delicacy - 50 cedis</p>
+            <button type="button" onclick="addToCart('Waakye', 50)">Add to List</button>
         </div>
     </section>
-    
+
     <section id="contacts" class="section"> 
         <h2>Contacts</h2> 
         <div class="contact-info"> 
-            <p>Contact us on:
-            Phone and WhatsApp:0249510633
-            Email: Conectarrestaurants@gmail.com
-            Developer:0257789272</p> 
+            <p>Contact us on:<br>
+            Phone and WhatsApp: 0249510633<br>
+            Email: Conectarrestaurants@gmail.com<br>
+            Developer: 0257789272</p> 
         </div> 
-        </section>
+    </section>
     
-     <section id="about" class="section"> 
+    <section id="about" class="section"> 
         <h2>About Us</h2>
         <div class="about-us"> 
-            <p>Conectar Restaurant
-            We are located at Kwadaso,Kumasi.
-            Website by:Kwabena Osei Nketiah 0257789272</p> 
+            <p>Conectar Restaurant<br>
+            We are located at Kwadaso, Kumasi.<br>
+            Website by: Kwabena Osei Nketiah 0257789272</p> 
         </div> 
     </section>
 
@@ -242,7 +107,7 @@ document.getElementById('order-form').classList.add('show');
     <div id="order-form" style="display:none;">
         <h2>Order Form</h2>
         <div id="order-details"></div>
-            <form action="https://formspree.io/f/xpwadnan" method="post" enctype="multipart/form-data" id="order-details" onsubmit="handleFormSubmit(event)">
+        <form action="https://formspree.io/f/xpwadnan" method="post" enctype="multipart/form-data" id="order-form" onsubmit="handleFormSubmit(event)">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="tel" name="number" placeholder="Your Phone Number" required>
             <input type="text" name="location" placeholder="Your Location" id="location-input" required>
@@ -252,5 +117,120 @@ document.getElementById('order-form').classList.add('show');
             <button type="submit">Place your Order</button>
         </form>
     </div>
+
+    <!-- Popup Modal -->
+    <div id="popup" class="popup-modal" style="display:none;">
+        <div class="popup-content">
+            <span class="close-btn" onclick="document.getElementById('popup').style.display='none'">&times;</span>
+            <p id="popup-message"></p>
+        </div>
+    </div>
+
+    <script>
+        function getCurrentLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    document.getElementById('latitude').value = position.coords.latitude;
+                    document.getElementById('longitude').value = position.coords.longitude;
+                    document.getElementById('location-input').value = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude;
+                }, function() {
+                    alert("Unable to retrieve your location.");
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function addToCart(dishName, price) {
+            let cartList = document.getElementById('cart-items');
+            let itemExists = false;
+
+            document.querySelector('.cart-sidebar').classList.add('show');
+
+            for (let item of cartList.children) {
+                if (item.dataset.dish === dishName) {
+                    let quantityInput = item.querySelector('input');
+                    quantityInput.value = parseInt(quantityInput.value) + 1;
+                    itemExists = true;
+                    break;
+                }
+            }
+
+            if (!itemExists) {
+                let cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.dataset.dish = dishName;
+                cartItem.innerHTML = `
+                    <p>${dishName} - ${price} Cedis</p>
+                    <input type="number" value="1" min="1" onchange="updateCartTotal()">
+                    <button onclick="removeFromCart(this)">Remove</button>
+                `;
+                cartList.appendChild(cartItem);
+            }
+
+            updateCartTotal();
+        }
+
+        function updateCartTotal() {
+            let cartList = document.getElementById('cart-items');
+            let total = 0;
+            for (let item of cartList.children) {
+                let quantity = parseInt(item.querySelector('input').value);
+                let price = parseInt(item.dataset.price);
+                total += price * quantity;
+            }
+            total += 20; // Delivery fee
+            document.getElementById('cart-total').innerText = 'Total: ' + total + ' Cedis';
+        }
+
+        function removeFromCart(button) {
+            let item = button.parentElement;
+            item.remove();
+            updateCartTotal();
+        }
+
+        function showOrderForm() {
+            let cartList = document.getElementById('cart-items');
+            if (cartList.children.length === 0) {
+                showPopup('Your cart is empty.');
+                return;
+            }
+
+            let orderDetails = document.getElementById('order-details');
+            orderDetails.innerHTML = ''; // Clear existing order details
+
+            for (let item of cartList.children) {
+                let dishName = item.dataset.dish;
+                let quantity = item.querySelector('input').value;
+                let dishElement = document.createElement('p');
+                dishElement.textContent = `${dishName}: ${quantity}`;
+                orderDetails.appendChild(dishElement);
+            }
+
+            document.getElementById('order-form').style.display = 'block';
+        }
+
+        function showPopup(message) {
+            let popup = document.getElementById('popup');
+            document.getElementById('popup-message').innerText = message;
+            popup.style.display = 'block';
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Gather form data
+            let formData = new FormData(event.target);
+
+            // Example of handling form data (you can customize this)
+            console.log('Form data:');
+            for (let [key, value] of formData.entries()) {
+                console.log(`${key}: ${value}`);
+            }
+
+            // After form handling, you can submit the form
+            event.target.submit();
+        }
+    </script>
 </body>
 </html>
