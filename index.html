@@ -146,12 +146,13 @@
         function addToCart(dishName, price) {
             let cartList = document.getElementById('cart-items');
             let itemExists = false;
+            
             document.querySelector('.cart-sidebar').classList.add('show');
 
             for (let item of cartList.children) {
                 if (item.dataset.dish === dishName) {
                     let quantityInput = item.querySelector('input');
-                    quantityInput.value = parseInt(quantityInput.value) + 1;
+                    quantityInput.value = parseInt(quantityInput.value,10) + 1;
                     itemExists = true;
                     break;
                 }
@@ -161,7 +162,7 @@
                 let cartItem = document.createElement('div');
                 cartItem.className = 'cart-item';
                 cartItem.dataset.dish = dishName;
-                cart.dataset.price = price;
+                cartItem.dataset.price = price;
                 cartItem.innerHTML = `
                     <p>${dishName} - ${price} Cedis</p>
                     <input type="number" value="1" min="1" onchange="updateCartTotal()">
@@ -178,8 +179,18 @@
             let total = 0;
             
             for (let item of cartList.children) {
-                let quantity = parseInt(item.querySelector('input').value);
-                let price = parseInt(item.dataset.price);
+                let quantity = parseInt(item.querySelector('input').value,10);
+                let price = parseInt(item.dataset.price,10);
+
+                console.log('Item:',item.dataset.dish,'Quantity:',quantity, 'Price:',price);
+                
+                if (isNaN(quantity) || quantity <= 0) {
+                    quantity = 1;
+                    }
+                
+                if (isNaN(price)) {
+                    price = 0;
+                    }
                 total += price * quantity;
             }
             
