@@ -101,7 +101,9 @@
         <div id="cart-items"></div>
         <p id="cart-total">Total: 0 Cedis</p>
         <button onclick="showOrderForm()">Checkout</button>
-    </div>
+        <!-- Close Button in HTML -->
+<button class="close-btn" onclick="closeCart()">×</button>
+</div>
 
     <!-- Order Form Modal -->
     <div id="order-form-modal" style="display:none;">
@@ -190,6 +192,10 @@
             item.remove();
             updateCartTotal();
         }
+
+    function closeCart() {
+        document.querySelector('.cart-sidebar').classList.remove('show');
+    }
 
         function showOrderForm() {
             let cartList = document.getElementById('cart-items');
