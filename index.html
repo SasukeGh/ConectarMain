@@ -104,7 +104,7 @@
     </div>
 
     <!-- Order Form Modal -->
-    <div id="order-form" style="display:none;">
+    <div id="order-form-modal" style="display:none;">
         <h2>Order Form</h2>
         <div id="order-details"></div>
         <form action="https://formspree.io/f/xpwadnan" method="post" enctype="multipart/form-data" id="order-form" onsubmit="handleFormSubmit(event)">
@@ -144,7 +144,6 @@
         function addToCart(dishName, price) {
             let cartList = document.getElementById('cart-items');
             let itemExists = false;
-
             document.querySelector('.cart-sidebar').classList.add('show');
 
             for (let item of cartList.children) {
@@ -199,11 +198,10 @@
                 return;
             }
 
-            document.getElementById('order-form').style.display = 'block';
+            
             // Populate the order form with the cart items 
-            populateOrderForm();
-        }
-
+            populateOrderForm(){
+                let cartList = document.getElementById('cart-items');
             let orderDetails = document.getElementById('order-details');
             orderDetails.innerHTML = ''; // Clear existing order details
 
