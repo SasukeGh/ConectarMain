@@ -143,12 +143,12 @@ console.log("Alive")
     })
                 let user = formData.get('name');
               
-    .then(response => response.json())
+  .then(function(response) { return response.json(); })
     .then(data => {
-        alert("Congratulations! "+user+",your order has been submitted. We will contactyou soon.")
+        alert("Congratulations! "+user+",your order has been submitted. We will contactyou soon.");
         // Optionally, handle success, e.g., redirect or show a confirmation message
     })
-    .catch((error) => {
+    .catch(function(error) {
                 alert("Sorry! "+user+"Your order failed.Please try again later")
         console.error('Error:', error);
         // Optionally, handle error, e.g., show an error message
