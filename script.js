@@ -1,4 +1,5 @@
-function getCurrentLocation() {
+console.log("Alive")
+            function getCurrentLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     document.getElementById('latitude').value = position.coords.latitude;
