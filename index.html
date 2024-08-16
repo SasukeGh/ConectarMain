@@ -27,7 +27,7 @@
         </nav>
         <div class="logo">
             <img src="images/conectar.jpg" alt="Conectar Restaurant Logo" class="logo-image">
-            <h1>Conectar Restaurant</h1>
+            <h1>Conectar Restaurant🍽</h1>
             <h3>Come for a drink, stay for a meal</h3>
         </div>
     </header>
@@ -109,7 +109,7 @@
     <div id="order-form-modal" style="display:none;">
         <h2>Order Form</h2>
         <div id="order-details"></div>
-        <form action="https://formspree.io/f/xpwadnan" method="post" enctype="multipart/form-data" id="order-form" onsubmit="handleFormSubmit(event)">
+        <form action="https://formspree.io/f/xzzpgpjp" method="post" enctype="multipart/form-data" id="order-form" onsubmit="handleFormSubmit(event)">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="tel" name="number" placeholder="Your Phone Number" required>
             <input type="text" name="location" placeholder="Your Location" id="location-input" required>
@@ -217,7 +217,6 @@
             }
             populateOrderFormModal();
             document.getElementById('order-form-modal').classList.add('show');
-            alert("Stage 1 set")
         }
 
             
@@ -227,7 +226,6 @@
             let orderDetails = document.getElementById('order-details');
             orderDetails.innerHTML = ''; // Clear existing order details
                 document.getElementById('order-form-modal').style.display = 'block';
-                alert("Stage 2 set")
 
             for (let item of cartList.children) {
                 let dishName = item.dataset.dish;
@@ -235,10 +233,8 @@
                 let dishElement = document.createElement('p');
                 dishElement.textContent = `${dishName}: ${quantity}`;
                 orderDetails.appendChild(dishElement);
-                
             }
         }
-        alert("Final stage set")
 
         function showPopup(message) {
             let popup = document.getElementById('popup');
@@ -248,17 +244,23 @@
 
         function handleFormSubmit(event) {
             event.preventDefault(); // Prevent form submission
-
-            // Gather form data
             let formData = new FormData(event.target);
+            let orderItems = [];
 
-            // Example of handling form data (you can customize this)
+            let cartList = document.getElementById('cart-items');
+            for (let item of cartList.children) {
+                let dishName = item.dataset.dish;
+                let quantity = item.querySelector('input').value;
+                orderItems.push(${dishName}:${quantity});
+            }
+
+            formData.append('order',orderItems.join('\n'));
+            
             console.log('Form data:');
             for (let [key, value] of formData.entries()) {
                 console.log(`${key}: ${value}`);
             }
 
-            // After form handling, you can submit the form
             event.target.submit();
         }
     </script>
