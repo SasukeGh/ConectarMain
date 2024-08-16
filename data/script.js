@@ -120,7 +120,7 @@ function getCurrentLocation() {
             for (let item of cartList.children) {
                 let dishName = item.dataset.dish;
                 let quantity = item.querySelector('input').value;
-                orderItems.push(${dishName}:${quantity});
+                orderItems.push(`${dishName}:${quantity}`);
             }
 
             formData.append('order',orderItems.join('\n'));
