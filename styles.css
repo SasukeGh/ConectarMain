@@ -8,7 +8,10 @@ body {
 header {
     position: relative;
     z-index: 2000;
-    background-image: url('images/conectar.jpg')
+    background-image: url('images/conectar.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #fff;
     padding: 10px 0;
     text-align: center;
