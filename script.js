@@ -1,3 +1,29 @@
+const isTablet = (
+  (navigator.userAgent.match(/Android/) && navigator.maxTouchPoints > 2) ||
+  (navigator.userAgent.match(/Android/) && screen.width > 1024) ||
+  (navigator.userAgent.match(/iPad/) && navigator.maxTouchPoints > 2) ||
+   (navigator.userAgent.match(/Macintosh/)&& navigator.maxTouchPoints > 2) ||
+   (navigator.userAgent.match(/Macintosh/) && screen.width > 1024) ||
+    (navigator.userAgent.match(/iPad/) && screen.width > 1024) ||
+);
+
+const hour = new Date().getHours();
+
+if (isTablet) {
+  alert("You are using a tablet! Click OK to visit our tablet-specific website. This website wont work");
+  window.location.href = "https://conectar-tab.vercel.app";
+} else {
+  let greeting;
+  if (hour < 12) {
+    greeting = "Good morning!";
+  } else if (hour < 18) {
+    greeting = "Good afternoon!";
+  } else {
+    greeting = "Good evening!";
+  }
+  alert(greeting);
+}
+
 function getCurrentLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
