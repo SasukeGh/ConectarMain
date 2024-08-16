@@ -203,10 +203,12 @@
                 showPopup('Your cart is empty.');
                 return;
             }
+            populateOrderForm();
+        }
 
             
             // Populate the order form with the cart items 
-            populateOrderForm(){
+            function populateOrderForm(){
                 let cartList = document.getElementById('cart-items');
             let orderDetails = document.getElementById('order-details');
             orderDetails.innerHTML = ''; // Clear existing order details
