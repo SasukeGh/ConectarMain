@@ -196,7 +196,7 @@ footer {
 @media screen and (max-width: 600px) {
     .cart-sidebar {
         width: 40%; /* Adjust width for mobile */
-        height: 20%; /* Adjust height for mobile */
+        height: 38%; /* Adjust height for mobile */
         top: 0%; /* Position from the top */
         bottom: 40%; /* Position from the bottom */
         border-left: none;
