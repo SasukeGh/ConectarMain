@@ -97,7 +97,7 @@
 
     <!-- Cart Sidebar -->
     <div id="cart" class="cart-sidebar">
-        <h2>Cart</h2>
+        <h2>Cart(20 cedis delivery fee)</h2>
         <div id="cart-items"></div>
         <p id="cart-total">Total: 0 Cedis</p>
         <button onclick="showOrderFormModal()">Checkout</button>
@@ -216,6 +216,7 @@
             }
             populateOrderFormModal();
             document.getElementById('order-form-modal').style.display = 'block';
+            alert("Stage 1 set")
         }
 
             
@@ -224,7 +225,8 @@
                 let cartList = document.getElementById('cart-items');
             let orderDetails = document.getElementById('order-details');
             orderDetails.innerHTML = ''; // Clear existing order details
-                console.log('populateOrderFormModal called')
+                document.getElementById('order-form-modal').style.display = 'block';
+                alert("Stage 2 set")
 
             for (let item of cartList.children) {
                 let dishName = item.dataset.dish;
@@ -232,7 +234,7 @@
                 let dishElement = document.createElement('p');
                 dishElement.textContent = `${dishName}: ${quantity}`;
                 orderDetails.appendChild(dishElement);
-                document.getElementById('order-form-modal').style.display = 'block';
+                alert(Final stage set)
             }
         }
 
