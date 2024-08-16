@@ -1,10 +1,6 @@
 const isTablet = (
-  (navigator.userAgent.match(/Android/) && navigator.maxTouchPoints > 2) ||
-  (navigator.userAgent.match(/Android/) && screen.width > 1024) ||
-  (navigator.userAgent.match(/iPad/) && navigator.maxTouchPoints > 2) ||
-   (navigator.userAgent.match(/Macintosh/)&& navigator.maxTouchPoints > 2) ||
-   (navigator.userAgent.match(/Macintosh/) && screen.width > 1024) ||
-   (navigator.userAgent.match(/iPad/) && screen.width > 1024) 
+  (navigator.maxTouchPoints > 2) ||
+  (screen.width > 1024)
 );
 
 const hour = new Date().getHours();
