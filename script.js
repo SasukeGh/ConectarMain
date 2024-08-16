@@ -1,14 +1,7 @@
-const isTablet = (
-  (navigator.maxTouchPoints > 2) ||
-  (screen.width > 1024)
-);
+confirm("If you are using a tablet,please click the OK button to go to the website for tablets");
+window.location.href = "https://conectar-tab.vercel.app";
 
 const hour = new Date().getHours();
-
-if (isTablet) {
-  alert("You are using a tablet! Click OK to visit our tablet-specific website. This website wont work");
-  window.location.href = "https://conectar-tab.vercel.app";
-} else {
   let greeting;
   if (hour < 12) {
     greeting = "Good morning!";
