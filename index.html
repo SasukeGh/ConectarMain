@@ -231,9 +231,8 @@
                 let dishElement = document.createElement('p');
                 dishElement.textContent = `${dishName}: ${quantity}`;
                 orderDetails.appendChild(dishElement);
+                document.getElementById('order-form-modal').style.display = 'block';
             }
-
-            document.getElementById('order-form-modal').style.display = 'block';
         }
 
         function showPopup(message) {
