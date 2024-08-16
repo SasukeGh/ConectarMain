@@ -199,6 +199,11 @@
                 return;
             }
 
+            document.getElementById('order-form').style.display = 'block';
+            // Populate the order form with the cart items 
+            populateOrderForm();
+        }
+
             let orderDetails = document.getElementById('order-details');
             orderDetails.innerHTML = ''; // Clear existing order details
 
