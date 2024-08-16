@@ -132,7 +132,7 @@ function getCurrentLocation() {
     for (let [key, value] of formData.entries()) {
         console.log(`${key}: ${value}`);
     }
-
+      let user = formData.get('name');
     // Make sure the form is properly submitted
     fetch(event.target.action, {
         method: 'POST',
@@ -141,7 +141,6 @@ function getCurrentLocation() {
             'Accept': 'application/json'
         }
     })
-                let user = formData.get('name');
               
   .then(function(response) { return response.json(); })
     .then(data => {
