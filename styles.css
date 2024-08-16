@@ -259,7 +259,7 @@ footer {
 }
 
 /* Order Form Modal */
-#order-form {
+#order-form-modal {
     position: fixed;
     top: 20%;
     left: 50%;
@@ -273,7 +273,7 @@ footer {
     transition: transform 0.3s ease;
 }
 
-#order-form.show {
+#order-form-modal.show {
     display: block;
     transform: translateX(-50%) scaleY(1);
 }
