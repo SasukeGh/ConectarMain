@@ -1,4 +1,4 @@
-console.log("Alive")
+console.log("Alivenow")
             function getCurrentLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
