@@ -1,4 +1,3 @@
-       console.log("Alive")
 function getCurrentLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
@@ -82,7 +81,7 @@ function getCurrentLocation() {
             console.log('ShowOrderFormModal called');
             let cartList = document.getElementById('cart-items');
             if (cartList.children.length === 0) {
-                showPopup('Your cart is empty.');
+                alert('Your cart is empty.');
                 return;
             }
             populateOrderFormModal();
