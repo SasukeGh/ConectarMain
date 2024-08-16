@@ -269,13 +269,14 @@ footer {
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
     border-radius: 8px;
     z-index: 1000;
-    display: none;
-    transition: transform 0.3s ease;
+    display: none; 
+    transition: transform 0.3s ease,opacity 0.3s ease;
 }
 
 #order-form-modal.show {
     display: block;
     transform: translateX(-50%) scaleY(1);
+    opacity: 1;
 }
 
 #order-form-modal form {
