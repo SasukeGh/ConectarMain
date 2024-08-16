@@ -223,6 +223,7 @@
                 let cartList = document.getElementById('cart-items');
             let orderDetails = document.getElementById('order-details');
             orderDetails.innerHTML = ''; // Clear existing order details
+                console.log('populateOrderFormModal called')
 
             for (let item of cartList.children) {
                 let dishName = item.dataset.dish;
