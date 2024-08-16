@@ -111,24 +111,42 @@ function getCurrentLocation() {
             popup.style.display = 'block';
         }
 
-        function handleFormSubmit(event) {
-            event.preventDefault(); // Prevent form submission
-            let formData = new FormData(event.target);
-            let orderItems = [];
+  function handleFormSubmit(event) {
+    event.preventDefault(); // Prevent form submission
+    
+    let formData = new FormData(event.target);
+    let orderItems = [];
 
-            let cartList = document.getElementById('cart-items');
-            for (let item of cartList.children) {
-                let dishName = item.dataset.dish;
-                let quantity = item.querySelector('input').value;
-                orderItems.push(`${dishName}:${quantity}`);
-            }
+    let cartList = document.getElementById('cart-items');
+    for (let item of cartList.children) {
+        let dishName = item.dataset.dish;
+        let quantity = item.querySelector('input').value;
+        orderItems.push(`${dishName}: ${quantity}`);
+    }
 
-            formData.append('order',orderItems.join('\n'));
-            
-            console.log('Form data:');
-            for (let [key, value] of formData.entries()) {
-                console.log(`${key}: ${value}`);
-            }
+    formData.append('order', orderItems.join('\n')); // Join order items with a newline
 
-            event.target.submit();
+    // Log FormData for debugging
+    console.log('Form data:');
+    for (let [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+    }
+
+    // Make sure the form is properly submitted
+    fetch(event.target.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
         }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        // Optionally, handle success, e.g., redirect or show a confirmation message
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        // Optionally, handle error, e.g., show an error message
+    });
+}
