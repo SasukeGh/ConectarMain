@@ -11,7 +11,6 @@ const hour = new Date().getHours();
     greeting = "Good evening!";
   }
   alert(greeting);
-}
 
 function getCurrentLocation() {
             if (navigator.geolocation) {
