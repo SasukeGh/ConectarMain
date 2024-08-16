@@ -278,26 +278,26 @@ footer {
     transform: translateX(-50%) scaleY(1);
 }
 
-#order-form form {
+#order-form-modal form {
     display: flex;
     flex-direction: column;
 }
 
-#order-form input, #order-form button {
+#order-form-modal input, #order-form-modal button {
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-#order-form button {
+#order-form-modal button {
     background: linear-gradient(135deg, #ff9a8b, #fbeff6);
     color: #fff;
     cursor: pointer;
     transition: background 0.3s ease;
 }
 
-#order-form button:hover {
+#order-form-modal button:hover {
     background: linear-gradient(135deg, #ff6f61, #fbeff6);
 }
 /* Popup Modal Styles */
