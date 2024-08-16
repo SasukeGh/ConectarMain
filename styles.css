@@ -172,7 +172,6 @@ footer {
     color: #fff;
 }
 
-/* Cart Sidebar */
 .cart-sidebar {
     position: fixed;
     right: 0;
@@ -186,12 +185,12 @@ footer {
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     z-index: 1000;
-    transform: translateX(100%);
+    transform: translateX(100%); /* Initially hide the cart */
     transition: transform 0.3s ease;
 }
 
 .cart-sidebar.show {
-    transform: translateX(0);
+    transform: translateX(0); /* Show the cart */
 }
 
 @media screen and (max-width: 600px) {
@@ -203,6 +202,7 @@ footer {
         border-left: none;
         border-top: 2px solid #ddd;
         transform: translateY(0); /* No vertical centering on mobile */
+        transform: translateX(100%); /* Ensure it’s hidden on mobile initially */
     }
 }
 
