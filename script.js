@@ -1,5 +1,6 @@
-confirm("If you are using a tablet,please click the OK button to go to the website for tablets");
+if (confirm("If you are using a tablet,please click the OK button to go to the website for tablets")){
 window.location.href = "https://conectar-tab.vercel.app";
+}
 
 const hour = new Date().getHours();
   let greeting;
