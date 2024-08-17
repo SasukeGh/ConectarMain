@@ -27,14 +27,15 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 15px;
+  background-color: #fff; /* Add white background color */
+  padding: 10px; /* Add padding to create space inside the box */
+  border-radius: 5px; /* Add rounded corners */
+  margin: 0 10px; /* Add margin to create space between boxes */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Add subtle shadow effect */
 }
 
 nav ul li a {
-    color: #FFA500;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease, transform 0.3s ease;
+  color: #333;
 }
 
 nav ul li a:hover {
