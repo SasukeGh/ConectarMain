@@ -158,7 +158,7 @@ function getCurrentLocation() {
               
   .then(function(response) { return response.json(); })
     .then(data => {
-        alert("Congratulations! "+user+",your order has been submitted. We will contactyou soon.");
+        alert("Congratulations! "+user+",your order has been submitted. We will contact you soon.");
         // Optionally, handle success, e.g., redirect or show a confirmation message
     })
     .catch(function(error) {
